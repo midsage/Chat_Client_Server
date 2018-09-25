@@ -12,6 +12,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
@@ -85,9 +87,25 @@ public class Login extends JFrame {
 		contentPane.add(lblIPAddressDesc);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = txtName.getText();
+				String address = txtAddress.getText();
+				int port = Integer.parseInt(txtPort.getText());
+				login(name, address, port);
+				
+			}
+
+			
+		});
 		btnLogin.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		btnLogin.setBounds(58, 312, 165, 28);
 		contentPane.add(btnLogin);
+	}
+	
+	private void login(String name, String address, int port) {
+		dispose();
+		new Client(name, address, port);
 	}
 	
 	
