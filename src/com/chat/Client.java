@@ -58,10 +58,9 @@ public class Client extends JFrame {
 			System.err.println("Connection Failed!");
 			console("Connection Failed!");
 		}
-
 		createWindow();
 		console("Attempting to connect to " + address + ":" + port + " as User: " + name);
-		String connection = name + " connected from " + address + ":" + port;
+		String connection = "/c/" + name;
 		send(connection.getBytes());
 	}
 
